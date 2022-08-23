@@ -48,7 +48,6 @@ namespace ProjekatRVA
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -64,14 +63,14 @@ namespace ProjekatRVA
              .AddJwtBearer(options =>
              {
                  var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecretKey"]));
-                 options.TokenValidationParameters = new TokenValidationParameters //Podesavamo parametre za validaciju pristiglih tokena
+                 options.TokenValidationParameters = new TokenValidationParameters
                  {
-                     ValidateIssuer = true, //Validira izdavaoca tokena
-                     ValidateAudience = false, //Kazemo da ne validira primaoce tokena
-                     ValidateLifetime = true,//Validira trajanje tokena
-                     ValidateIssuerSigningKey = true, //validira potpis token, ovo je jako vazno!
-                     ValidIssuer = "http://localhost:44386", //odredjujemo koji server je validni izdavalac
-                     IssuerSigningKey = key//navodimo privatni kljuc kojim su potpisani nasi tokeni
+                     ValidateIssuer = true, 
+                     ValidateAudience = false,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+                     ValidIssuer = "http://localhost:44386",
+                     IssuerSigningKey = key
                  };
              });
             //--------------------------------------------------------------------------------------
@@ -80,7 +79,7 @@ namespace ProjekatRVA
            services.AddCors(options =>
             {
                 options.AddPolicy(name: _cors, builder => {
-                    builder.WithOrigins("http://localhost:3000", "http://localhost:3001")//Ovde navodimo koje sve aplikacije smeju kontaktirati nasu,u ovom slucaju nas Angular front
+                    builder.WithOrigins("http://localhost:3000", "http://localhost:3001")
                            .AllowAnyHeader()
                            .AllowAnyMethod()
                            .AllowCredentials();
@@ -131,7 +130,6 @@ namespace ProjekatRVA
             
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -143,7 +141,6 @@ namespace ProjekatRVA
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                // koristi se za inicijalizaciju podataka
                 scope.ServiceProvider.GetRequiredService<IDataInitialization>().DataInitialization();       
             }
 

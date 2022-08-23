@@ -19,10 +19,10 @@ namespace ProjekatRVA.Tokens.TokenProviders
                 claims.Add(new Claim(ClaimTypes.Role, "guest"));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
             var tokeOptions = new JwtSecurityToken(
-                issuer: "http://localhost:44386", //url servera koji je izdao token
-                claims: claims, //claimovi
-                expires: DateTime.Now.AddMinutes(20), //vazenje tokena u minutama
-                signingCredentials: signinCredentials //kredencijali za potpis
+                issuer: "http://localhost:44386", 
+                claims: claims, 
+                expires: DateTime.Now.AddMinutes(20), 
+                signingCredentials: signinCredentials 
             );
             string tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
             return tokenString;
