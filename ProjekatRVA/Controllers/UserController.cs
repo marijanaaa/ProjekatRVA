@@ -42,7 +42,6 @@ namespace ProjekatRVA.Controllers
             {
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
         [HttpPut("editProfile")]
@@ -60,7 +59,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
         [HttpPost("registerUser")]
@@ -78,7 +76,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
         [HttpPost("logout")]
@@ -96,7 +93,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
 
@@ -111,7 +107,6 @@ namespace ProjekatRVA.Controllers
             {
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
 

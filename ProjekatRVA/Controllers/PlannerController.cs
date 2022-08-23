@@ -46,7 +46,6 @@ namespace ProjekatRVA.Controllers
             {
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
 
@@ -66,7 +65,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
 
         }
@@ -86,7 +84,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
         
@@ -105,7 +102,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.INFO, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
 
@@ -124,7 +120,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
 
@@ -144,7 +139,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
 
@@ -160,7 +154,6 @@ namespace ProjekatRVA.Controllers
             {
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
     }

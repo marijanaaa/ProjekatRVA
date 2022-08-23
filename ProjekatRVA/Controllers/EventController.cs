@@ -35,10 +35,8 @@ namespace ProjekatRVA.Controllers
         [HttpPost("getAllEvents")]
         public async Task<IActionResult> GetAllEvents(int plannerId, string token)
         {
-            //string username = _receiver.GetUsernameByToken(token);
             try
             {
-                //_logger.LogMessage(username + " : GetAllEvents", ELog.INFO);
                 List<Event> events = new List<Event>();
                 events = await _receiver.GetAllEvents(plannerId);
                 return Ok(events);
@@ -46,10 +44,8 @@ namespace ProjekatRVA.Controllers
             }
             catch (Exception e)
             {
-                //_logger.LogMessage(username + " : "+e.Message, ELog.ERROR);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
 
@@ -69,7 +65,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
 
@@ -88,7 +83,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
         [HttpDelete("deleteEvent")]
@@ -106,7 +100,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, username + " : "+e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
         }
     }

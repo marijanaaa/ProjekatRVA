@@ -39,3 +39,12 @@
 2022-08-22 14:46:27.896 +02:00 [INF] admin : Logout
 2022-08-22 14:46:32.853 +02:00 [INF] admin : Logout
 2022-08-22 21:27:17.910 +02:00 [INF] admin : Logging
+2022-08-23 11:45:16.509 +02:00 [INF] admin : Logging
+2022-08-23 11:46:08.258 +02:00 [INF] admin : DeletePlanner
+2022-08-23 11:46:10.342 +02:00 [INF] admin : DeletePlanner
+2022-08-23 11:46:14.893 +02:00 [INF] admin : AddNewPlanner
+2022-08-23 11:46:19.897 +02:00 [INF] admin : AddNewPlanner
+2022-08-23 14:40:14.296 +02:00 [INF] admin : Logging
+2022-08-23 14:41:18.794 +02:00 [INF] admin : AddNewPlanner
+2022-08-23 14:41:19.810 +02:00 [INF] admin : AddNewPlanner
+2022-08-23 14:42:07.096 +02:00 [INF] admin : Logout

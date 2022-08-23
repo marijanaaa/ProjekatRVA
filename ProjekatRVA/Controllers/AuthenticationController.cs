@@ -56,7 +56,6 @@ namespace ProjekatRVA.Controllers
                 _logger.LogEvent(ELog.ERROR, "Error in logging" + " : " + e.Message);
                 ErrorDto errorDTO = new ErrorDto() { Message = e.Message };
                 return BadRequest(errorDTO);
-                throw;
             }
             
         }
