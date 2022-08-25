@@ -56,6 +56,13 @@ namespace ProjekatRVA
             services.AddDbContext<PlannerDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PlannerDatabase")));
 
             //---------------------------------------------------------------------
+
+
+           
+
+
+
+
             services.AddAuthentication(opt => {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -106,7 +113,7 @@ namespace ProjekatRVA
             services.AddScoped<EditUserDto>();
             services.AddScoped<RegisterDto>();
             services.AddScoped<SearchDto>();
-            services.AddScoped<ProjekatRVA.Logger.ILogger, ProjekatRVA.Logger.Logger>();
+            services.AddSingleton<ProjekatRVA.Logger.ILogger, ProjekatRVA.Logger.Logger>();
             services.AddScoped<IDataInitialization, ProjekatRVA.DataInitialization.Providers.DataInitialization>();
 
             //------------------------------------------------
@@ -125,6 +132,29 @@ namespace ProjekatRVA
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProjekatRVA", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    BearerFormat = "JWT",
+                    Scheme = "bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+                            }
+                        },
+                        new string[]{}
+                    }
+                });
             });
 
             

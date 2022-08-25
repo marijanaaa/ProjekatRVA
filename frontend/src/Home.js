@@ -15,7 +15,8 @@ export class Home extends Component {
                 method:'POST',
                 headers:{
                     'Accept':'application/json',
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json',
+                    Authorization : "Bearer "+this.props.tok
                 },
                 body:JSON.stringify({
                     Token:this.props.tok
@@ -32,7 +33,7 @@ export class Home extends Component {
     render() {
         return (
             <div className="mt-5 d-flex justify-content-left">
-                <h1>Home</h1>
+                <h1>Home</h1><br/>
                     <Button variant="primary" onClick={this.handleSubmit}>
                             LOG OUT 
                     </Button>

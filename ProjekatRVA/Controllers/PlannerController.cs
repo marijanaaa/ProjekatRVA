@@ -52,7 +52,7 @@ namespace ProjekatRVA.Controllers
         [HttpPost("addNewPlanner")]
         public IActionResult AddNewPlanner([FromBody] AddNewPlannerDto dto)
         {
-            string username = _receiver.GetUsernameByToken(dto.Token);
+            string username = User.Identity.Name;
             try
             { 
                 _logger.LogEvent(ELog.INFO, username + " : AddNewPlanner");
@@ -71,7 +71,7 @@ namespace ProjekatRVA.Controllers
         
         [HttpPut("updatePlanner")]
         public IActionResult UpdatePlanner([FromBody] EditPlannerDto dto) {
-            string username = _receiver.GetUsernameByToken(dto.Token); ;
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : UpdatePlanner");
@@ -89,7 +89,7 @@ namespace ProjekatRVA.Controllers
         
         [HttpDelete("deletePlanner")]
         public IActionResult DeletePlanner([FromBody]DeleteDto deleteDto) {
-            string username = _receiver.GetUsernameByToken(deleteDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : DeletePlanner");
@@ -107,7 +107,7 @@ namespace ProjekatRVA.Controllers
 
         [HttpPost("duplicatePlanner")]
         public IActionResult DuplicatePlanner([FromBody]DuplicateDto duplicateDto) {
-            string username = _receiver.GetUsernameByToken(duplicateDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : DuplicatePlanner");
@@ -125,13 +125,13 @@ namespace ProjekatRVA.Controllers
 
         [HttpPost("searchPlanners")]
         public IActionResult SearchPlanners([FromBody]SearchDto searchDto) {
-            string username = _receiver.GetUsernameByToken(searchDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : SearchPlanners");
                 _command = new SearchPlannerCommand(_receiver, searchDto);
                 _invoker.AddAndExecute(_command);
-                List<PlannerDto> planners = _receiver.SearchPlanners(searchDto.PlannerName);
+                List<PlannerDto> planners = _receiver.SearchPlanners(searchDto.PlannerName, searchDto.Token);
                 return Ok(planners);
             }
             catch (Exception e)
@@ -144,7 +144,7 @@ namespace ProjekatRVA.Controllers
 
         [HttpPost("getPlanner")]
         public IActionResult GetPlanner(GetPlannerDto getPlannerDto) {
-            string username = _receiver.GetUsernameByToken(getPlannerDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 PlannerDto plannerDto = _receiver.GetPlannerById(getPlannerDto.PlannerId);

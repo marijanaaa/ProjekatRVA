@@ -13,7 +13,8 @@ export class EditEventModal extends Component {
             method:'PUT',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.token
             },
             body:JSON.stringify({
                 Text:event.target.Text.value,//izmijeniti
@@ -51,7 +52,7 @@ export class EditEventModal extends Component {
                                     </Form.Group>
 
                                     <Form.Group>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="primary" type="submit" onClick={this.props.onHide}>
                                             Update Event
                                         </Button>
                                     </Form.Group>

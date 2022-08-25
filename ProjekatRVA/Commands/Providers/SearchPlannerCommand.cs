@@ -15,7 +15,7 @@ namespace ProjekatRVA.Commands.Providers
         }
         public void Execute()
         {
-            receiver.SearchPlanners(searchDto.PlannerName);
+            receiver.SearchPlanners(searchDto.PlannerName, searchDto.Token);
         }
     }
 }

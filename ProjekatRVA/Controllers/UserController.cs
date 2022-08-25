@@ -46,7 +46,7 @@ namespace ProjekatRVA.Controllers
         }
         [HttpPut("editProfile")]
         public IActionResult EditProfile([FromBody]EditUserDto editUserDto) {
-            string username = _receiver.GetUsernameByToken(editUserDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : EditProfile");
@@ -63,7 +63,7 @@ namespace ProjekatRVA.Controllers
         }
         [HttpPost("registerUser")]
         public IActionResult RegisterUser(RegisterDto registerDto) {
-            string username = _receiver.GetUsernameByToken(registerDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : RegisterUser");
@@ -80,7 +80,7 @@ namespace ProjekatRVA.Controllers
         }
         [HttpPost("logout")]
         public IActionResult Logout([FromBody] TokenDto tokenDto) {
-            string username = _receiver.GetUsernameByToken(tokenDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : Logout");

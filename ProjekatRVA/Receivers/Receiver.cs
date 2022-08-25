@@ -149,9 +149,18 @@ namespace ProjekatRVA.Receivers
             
         }
 
-        public List<PlannerDto> SearchPlanners(string plannerName)
+        public List<PlannerDto> SearchPlanners(string plannerName, string token)
         {
-            return _plannerService.GetAllPlannersByName(plannerName);
+            int userId = _loggedUsersService.GetUserByToken(token);
+            List<PlannerDto> planners = _plannerService.GetAllPlanners(userId).Result;
+            List<PlannerDto> retlist = new List<PlannerDto>();
+            foreach (var item in planners)
+            {
+                if (item.PlannerName.ToLower().Contains(plannerName.ToLower())) {
+                    retlist.Add(item);
+                }
+            }
+            return retlist;
         }
 
         public List<LogDto> GetLogs(TokenDto tokenDto)

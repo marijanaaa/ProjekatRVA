@@ -26,7 +26,7 @@ namespace ProjekatRVA.Receivers
         void RegisterUser(RegisterDto registerDto);
         void Logout(TokenDto tokenDto);
         void DuplicatePlanner(DuplicateDto duplicateDto);
-        List<PlannerDto> SearchPlanners(string plannerName);
+        List<PlannerDto> SearchPlanners(string plannerName, string token);
         List<LogDto> GetLogs(TokenDto tokenDto);
         string GetUsernameByToken(string token);
         PlannerDto GetPlannerById(int plannerId); 

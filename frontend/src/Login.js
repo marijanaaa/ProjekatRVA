@@ -68,9 +68,7 @@ export class Login extends Component {
           isLoggedIn ? 
           <BrowserRouter>
             <div className="container">
-              <h3 className="m-3 d-flex justify-content-center">
-                React JS Tutorial
-              </h3>
+          
               <Navigation usertype={userType}/>
               <Switch>
                 <Route path='/' component={Home} exact>

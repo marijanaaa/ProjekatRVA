@@ -14,7 +14,8 @@ export class AddPlannerModal extends Component {
             method:'POST',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.token
             },
             body:JSON.stringify({
                 PlannerName:event.target.Name.value,
@@ -41,7 +42,7 @@ export class AddPlannerModal extends Component {
                                         <Form.Control type="text" name="Name" required placeholder="PlannerName"/>
                                     </Form.Group>
                                     <Form.Group>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="primary" type="submit" onClick={this.props.onHide}>
                                             Add Planner
                                         </Button>
                                     </Form.Group>

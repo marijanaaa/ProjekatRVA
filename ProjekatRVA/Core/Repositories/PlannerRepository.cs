@@ -27,11 +27,5 @@ namespace ProjekatRVA.Core.Repositories
             return planners;
         }
 
-        public List<Planner> GetAllPlannersByName(string plannerName)
-        {
-            List<Planner> planners = new List<Planner>();
-            planners = _context.Planners.Where(x=>x.PlannerName.Contains(plannerName)).ToList();
-            return planners;
-        }
     }
 }

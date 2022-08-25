@@ -14,7 +14,8 @@ export class EditProfileModal extends Component {
             method:'PUT',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.token
             },
             body:JSON.stringify({
                 Name:event.target.Name.value,
@@ -49,7 +50,7 @@ export class EditProfileModal extends Component {
                                         defaultValue={this.props.lastname}/>
                                     </Form.Group>
                                     <Form.Group>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="primary" type="submit" onClick={this.props.onHide}>
                                             Edit Profile
                                         </Button>
                                     </Form.Group>

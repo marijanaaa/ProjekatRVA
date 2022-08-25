@@ -57,19 +57,6 @@ namespace ProjekatRVA.Service.ServiceProvider
             return retlist;
         }
 
-        public List<PlannerDto> GetAllPlannersByName(string plannerName)
-        {
-            List<Planner> planners = _unitOfWork.Planners.GetAllPlannersByName(plannerName);
-            List<PlannerDto> retlist = new List<PlannerDto>();
-            foreach (var item in planners)
-            {
-                PlannerDto plannerDto = new PlannerDto();
-                plannerDto.PlannerName = item.PlannerName;
-                plannerDto.Id = item.Id;
-                retlist.Add(plannerDto);
-            }
-            return retlist;
-        }
 
         public void UpdatePlanner(EditPlannerDto dto, int userId)
         {//bespotreban je userid

@@ -20,7 +20,7 @@ namespace ProjekatRVA.Core.Repositories
 
         public void EditUser(int userId, string name, string lastname)
         {
-            User user = _context.Users.FirstOrDefault(x=>x.Id == userId);
+            User user = _context.Users.FirstOrDefault(x => x.Id == userId); 
             user.Name = name;
             user.LastName = lastname;
             _context.Users.Update(user);

@@ -21,7 +21,7 @@ namespace ProjekatRVA.Core.Repositories
 
         public int GetUserByToken(string token)
         {
-            int userId =  _context.LoggedInUsers.Where(x=>x.Token == token).FirstOrDefault().UserId;
+            int userId = _context.LoggedInUsers.Where(x=>x.Token == token).FirstOrDefault().UserId;
             return userId;
         }
 

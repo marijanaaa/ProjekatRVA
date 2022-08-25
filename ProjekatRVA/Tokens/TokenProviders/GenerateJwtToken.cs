@@ -17,6 +17,7 @@ namespace ProjekatRVA.Tokens.TokenProviders
                 claims.Add(new Claim(ClaimTypes.Role, "admin"));
             if (user.UserType == Enums.EUserType.GUEST)
                 claims.Add(new Claim(ClaimTypes.Role, "guest"));
+            claims.Add(new Claim(ClaimTypes.Name, user.Username));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
             var tokeOptions = new JwtSecurityToken(
                 issuer: "http://localhost:44386", 

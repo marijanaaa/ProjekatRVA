@@ -17,7 +17,8 @@ export class SearchPlannerModal extends Component {
             method:'POST',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.token
             },
             body:JSON.stringify({
                 PlannerName:event.target.Name.value,
@@ -54,7 +55,8 @@ export class SearchPlannerModal extends Component {
                 method:'POST',
                 headers:{
                     'Accept':'application/json',
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json',
+                    Authorization : "Bearer "+this.props.token
                 },
                 body:JSON.stringify({
                     PlannerId:plannerid,

@@ -9,6 +9,5 @@ namespace ProjekatRVA.Core.IRepositories
     {
         Task<Planner> FindPlannerById(int id);
         Task<List<Planner>> GetAllForParticularUser(int id);
-        List<Planner> GetAllPlannersByName(string plannerName);
     }
 }

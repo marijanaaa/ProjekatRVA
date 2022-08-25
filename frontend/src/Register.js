@@ -16,7 +16,8 @@ export class Register extends Component {
             method:'POST',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.tok
             },
             body:JSON.stringify({
                 Name:event.target.Name.value,
@@ -24,10 +25,9 @@ export class Register extends Component {
                 Username:event.target.Username.value,
                 Password:event.target.Password.value,
                 UserType:event.target.UserType.value,
-                Token:this.props.tok
             })
         })
-        .then(res=>res.json());
+        alert("New user registered");
     }
 
     render() {

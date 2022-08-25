@@ -16,7 +16,8 @@ export class Logs extends Component {
             method:'POST',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.tok
             },
             body:JSON.stringify({
                 Token:this.props.tok

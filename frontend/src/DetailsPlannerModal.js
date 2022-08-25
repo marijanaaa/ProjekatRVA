@@ -13,12 +13,12 @@ export class DetailsPlannerModal extends Component {
 
 
     refreshList(){
-        fetch(process.env.REACT_APP_API+'event/getAllEvents?plannerId='+this.props.plannerid+'&token='+
-        this.props.token,{
+        fetch(process.env.REACT_APP_API+'event/getAllEvents?plannerId='+this.props.plannerid,{
             method:'POST',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.token
             }
         })
         .then(response=>response.json())
@@ -37,12 +37,12 @@ export class DetailsPlannerModal extends Component {
 
     deleteEvent(eventid){
         if(window.confirm('Are you sure?')){
-            fetch(process.env.REACT_APP_API+'event/deleteEvent?eventId='+eventid+'&token='+
-            this.props.token,{
+            fetch(process.env.REACT_APP_API+'event/deleteEvent?eventId='+eventid, {
                 method:'DELETE',
                 headers:{
                     'Accept':'application/json',
-                    'Content-Type':'application/json'
+                    'Content-Type':'application/json',
+                    Authorization : "Bearer "+this.props.token
                 }
             })
         }

@@ -18,10 +18,10 @@ export class EditPlannerModal extends Component {
             method:'POST',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.token
             },
             body:JSON.stringify({
-                Token:this.props.token,
                 PlannerId:this.props.plannerid
             })
         })
@@ -37,7 +37,8 @@ export class EditPlannerModal extends Component {
                     method:'PUT',
                     headers:{
                         'Accept':'application/json',
-                        'Content-Type':'application/json'
+                        'Content-Type':'application/json',
+                        Authorization : "Bearer "+this.props.token
                     },
                     body:JSON.stringify({
                         Id:this.props.plannerid,

@@ -12,6 +12,5 @@ namespace ProjekatRVA.Service.IServices
         void UpdatePlanner(EditPlannerDto dto, int userId);
         void DeletePlanner(Planner planner);
         Task<Planner> FindPlannerById(int id);
-        List<PlannerDto> GetAllPlannersByName(string plannerName);
     }
 }

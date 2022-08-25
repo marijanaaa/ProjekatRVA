@@ -33,7 +33,7 @@ namespace ProjekatRVA.Controllers
         }
 
         [HttpPost("getAllEvents")]
-        public async Task<IActionResult> GetAllEvents(int plannerId, string token)
+        public async Task<IActionResult> GetAllEvents(int plannerId)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace ProjekatRVA.Controllers
         [HttpPost("addEvent")]
         public IActionResult AddEvent([FromBody] AddEventDto addEventDto)
         {
-            string username = _receiver.GetUsernameByToken(addEventDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : AddEvent");
@@ -70,7 +70,7 @@ namespace ProjekatRVA.Controllers
 
         [HttpPut("updateEvent")]
         public IActionResult UpdateEvent([FromBody]UpdateEventDto updateEventDto) {
-            string username = _receiver.GetUsernameByToken(updateEventDto.Token);
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : UpdateEvent");
@@ -86,8 +86,8 @@ namespace ProjekatRVA.Controllers
             }
         }
         [HttpDelete("deleteEvent")]
-        public IActionResult DeleteEvent(int eventId, string token) {
-            string username = _receiver.GetUsernameByToken(token);
+        public IActionResult DeleteEvent(int eventId) {
+            string username = User.Identity.Name;
             try
             {
                 _logger.LogEvent(ELog.INFO, username + " : DeleteEvent");

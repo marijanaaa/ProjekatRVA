@@ -13,16 +13,15 @@ export class AddEventModal extends Component {
             method:'POST',
             headers:{
                 'Accept':'application/json',
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                Authorization : "Bearer "+this.props.token
             },
             body:JSON.stringify({
                 Text:event.target.Text.value,
                 DateAndTime:event.target.DateAndTime.value,
                 PlannerId:this.props.idplanner,
-                Token:this.props.token
             })
         })
-        .then(res=>res.json())
     }
 
     render(){
@@ -47,7 +46,7 @@ export class AddEventModal extends Component {
                                         <Form.Control type="text" name="DateAndTime" required placeholder="EventDateAndTime"/>
                                     </Form.Group>
                                     <Form.Group>
-                                        <Button variant="primary" type="submit">
+                                        <Button variant="primary" type="submit" onClick={this.props.onHide}>
                                             Add Event
                                         </Button>
                                     </Form.Group>
